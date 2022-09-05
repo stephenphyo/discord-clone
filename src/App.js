@@ -1,58 +1,62 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import React, { useEffect } from 'react';
+
+/* CSS Imports */
 import './App.css';
 
+/* Component Imports */
+import Sidebar from 'components/Sidebar/Sidebar';
+import Chat from 'components/Chat/Chat';
+
+/* Page Imports */
+import Login from 'pages/Login/Login';
+
+/* Redux Imports */
+import { useSelector, useDispatch } from 'react-redux';
+import { selectUser } from 'app/slices/userSlice';
+import { login, logout } from 'app/slices/userSlice';
+
+/* Firebase Imports */
+import { onAuthStateChanged } from 'firebase/auth';
+import { firebaseAuth } from 'services/Firebase/FirebaseAuth';
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
-  );
+
+    /* Redux */
+    const user = useSelector(selectUser);
+    const dispatch = useDispatch();
+
+    /* useEffect */
+    useEffect(() => {
+        onAuthStateChanged(firebaseAuth, (auth) => {
+            if (auth) {
+                dispatch(
+                    login({
+                        accessToken: auth.accessToken,
+                        uid: auth.uid,
+                        displayName: auth.displayName,
+                        email: auth.email,
+                        photoURL: auth.photoURL
+                    })
+                );
+            } else {
+                dispatch(logout());
+            }
+        });
+    }, [dispatch]);
+
+    return (
+        <main className='app'>
+            {user ? (
+                <>
+                    <Sidebar />
+                    <Chat />
+                </>
+            ) : (
+                <Login />
+            )
+            }
+        </main>
+    );
 }
 
 export default App;

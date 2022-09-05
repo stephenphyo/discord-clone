@@ -1,0 +1,16 @@
+.sidebar_channel {
+    display: flex;
+    align-items: center;
+    padding: 7px 15px;
+    border-radius: 4px;
+    font-family: sans-serif;
+    font-size: 14px;
+    color: gray;
+    cursor: pointer;
+    transition: 0.15s ease;;
+}
+
+.sidebar_channel:hover {
+    color: #dcddde;
+    background-color: #3c3f45;
+}

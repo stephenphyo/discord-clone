@@ -1,0 +1,186 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    min-width: 250px;
+    height: 100%;
+    min-height: 500px;
+    font-family: system-ui, sans-serif;
+    user-select: none;
+    background-color: #2f3136;
+}
+
+.sidebar_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+    height: 45px;
+    padding: 10px 20px;
+    font-size: 15px;
+    color: #ffffff;
+    box-shadow: 0px 1px 3px #26282c;
+    transition: 0.2s ease-out;
+    cursor: pointer;
+}
+
+.sidebar_header:hover {
+    background-color: #3c3f45;
+}
+
+.sidebar_body {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    background-color: #2f3136;
+}
+
+.sidebar_body_category {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    color: gray;
+    cursor: pointer;
+}
+
+.sidebar_body_category_name {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    transition: 0.15s ease;
+}
+
+.sidebar_body_category_name svg {
+    transition: transform 0.15s ease;
+    font-size: 16px;
+}
+
+.sidebar_body_category_name.open svg {
+    transform: rotate(-90deg);
+}
+
+.sidebar_body_category_name:hover {
+    color: #dcddde;
+}
+
+#sidebar_body_category_addChannel {
+    font-size: 18px;
+}
+
+#sidebar_body_category_addChannel:hover {
+    color: #dcddde;
+}
+
+.sidebar_body_channels {
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+    width: 100%;
+    height: fit-content;
+}
+
+/* Sidebar Footer */
+.sidebar_footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding: 5px;
+    padding-right: 10px;
+    color: gray;
+    background-color: #292b2f;
+}
+
+.sidebar_footer_profile {
+    display: flex;
+    align-items: center;
+    padding: 3px 5px;
+    cursor: pointer;
+    gap: 10px;
+}
+
+.sidebar_footer_profile:hover {
+    border-radius: 5px;
+    background-color: #3f434a;
+}
+
+.sidebar_footer_profile .MuiAvatar-root {
+    width: 30px;
+    height: 30px;
+}
+
+.sidebar_footer_profile_info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.sidebar_footer_profile_info #username {
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.sidebar_footer_profile_info #userid {
+    font-family: sans-serif;
+    font-size: 12px;
+}
+
+.sidebar_footer_options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3px;
+}
+
+.sidebar_footer_options #icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.sidebar_footer_options #icon:hover {
+    background-color: gray;
+}
+
+.sidebar_footer_options .MuiSvgIcon-root {
+    font-size: 20px;
+    color: #dcddde;
+}
+
+/* Scroll Bar */
+.sidebar_body::-webkit-scrollbar {
+    visibility: hidden;
+}
+
+.sidebar_body:hover::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar_body:hover::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar_body:hover::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar_body:hover::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.sidebar_body:hover::-webkit-scrollbar-thumb:active {
+    background: rgba(255, 255, 255, 0.3);
+}
